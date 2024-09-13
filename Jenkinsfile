@@ -20,6 +20,12 @@ pipeline{
                 sh 'mvn test'
             }
         }
+         stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t rohitdadgelwar/shoes_microservice .'
+            }
+        }
+    
     }
     
 }
