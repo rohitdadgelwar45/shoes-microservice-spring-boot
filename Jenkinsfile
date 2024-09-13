@@ -20,9 +20,16 @@ pipeline{
                 sh 'mvn test'
             }
         }
-         stage('Build Docker Image') {
+        stage('Build Docker Image') {
             steps {
                 sh 'docker build -t rohitdadgelwar/shoes_microservice .'
+            }
+        }
+        stage('Push Docker Image') {
+            steps {
+                withDockerRegistry(credentialsId: 'DockerHub', url: 'https://hub.docker.com/repository/docker/rohitdadgelwar/shoes_microservice/general') {
+                    sh 'docker push rohitdadgelwar/shoes_microservice:latest'
+                }
             }
         }
     
