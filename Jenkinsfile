@@ -26,7 +26,7 @@ pipeline{
             steps {
                     withCredentials([string(credentialsId: 'Docker-Hub', variable: 'docker-hub')]) 
                     {
-                    sh 'docker login -u rohitdockerhub2002 -p ${Docker-Hub}
+                    sh 'docker login -u rohitdockerhub2002 -p ${Docker-Hub}'
                  //   sh 'docker tag demo-image RohitDadgelwar/shoes_microservice:latest'
                     sh 'docker push RohitDadgelwar/shoes_microservice:latest'
                     sh 'docker logout'
