@@ -16,16 +16,7 @@ pipeline{
                 sh 'mvn clean install'
             }
         }
-        stage('Test') {
-            steps {
-                sh 'maven test'
-            }
-            post{
-                always{
-                    junit stdioRetention: '', testResults: '**/target/surefire-reports/*.xml'
-                }
-            }
-        }
+      
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t rohitdadgelwar/shoes_microservice .'
