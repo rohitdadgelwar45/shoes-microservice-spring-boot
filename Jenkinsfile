@@ -27,7 +27,7 @@ pipeline{
         }
         stage('Push Docker Image') {
             steps {
-                   withDockerRegistry(credentialsId: 'Docker-Hub-cred', url: 'https://hub.docker.com/repository/docker/rohitdockerhub2002/shoes-microservice/general')
+                   withDockerRegistry(credentialsId: 'Docker-Hub-cred', url: '')
                     {
                         sh 'docker push rohitdocker2002/shoes_microservice:latest'
                     }
