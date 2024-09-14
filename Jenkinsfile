@@ -27,9 +27,9 @@ pipeline{
         }
         stage('Push Docker Image') {
             steps {
-                    withCredentials([string(credentialsId: 'Docker-pass', variable: 'Docker-pass')])
+                   withCredentials([string(credentialsId: 'pass', variable: 'varname')])
                     {
-                    sh 'docker login -u ${Docker_User} -p ${Docker-pass}'
+                    sh 'docker login -u ${Docker_User} -p ${pass}'
                  //   sh 'docker tag demo-image RohitDadgelwar/shoes_microservice:latest'
                     sh 'docker push rohitdocker2002/shoes_microservice:latest'
                     sh 'docker logout'
