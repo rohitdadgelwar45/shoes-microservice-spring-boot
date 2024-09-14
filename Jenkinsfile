@@ -4,7 +4,7 @@ pipeline{
         maven "maven"
     }
     environment{
-        DockerHub=credential('docker-pass')
+        Docker_User='rohitdocker2002'
     }
 
     stages{
@@ -22,16 +22,16 @@ pipeline{
       
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t rohitdadgelwar/shoes_microservice .'
+                sh 'docker build -t rohitdocker2002/shoes_microservice .'
             }
         }
         stage('Push Docker Image') {
             steps {
                     withCredentials([string(credentialsId: 'docker-pass', variable: 'docker-pass')])
                     {
-                    sh 'docker login -u rohitdockerhub2002 -p ${Docker-Hub}'
+                    sh 'docker login -u ${Docker_User} -p ${docker-pass}'
                  //   sh 'docker tag demo-image RohitDadgelwar/shoes_microservice:latest'
-                    sh 'docker push RohitDadgelwar/shoes_microservice:latest'
+                    sh 'docker push rohitdocker2002/shoes_microservice:latest'
                     sh 'docker logout'
                     }
             }
