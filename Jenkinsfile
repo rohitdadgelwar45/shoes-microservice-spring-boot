@@ -22,7 +22,7 @@ pipeline{
             }
             post{
                 always{
-                    junit stdioRetention: '', testResult: '**/target/surefire-reports/*.xml'
+                    junit stdioRetention: '', testResults: '**/target/surefire-reports/*.xml'
                 }
             }
         }
