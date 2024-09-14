@@ -33,7 +33,7 @@ pipeline{
         }
         stage('Push Docker Image') {
             steps {
-                    withCredentials([string(credentialsId: Docker-Hub', variable: 'docker-hub')]) 
+                    withCredentials([string(credentialsId: 'Docker-Hub', variable: 'docker-hub')]) 
                     {
                     sh 'docker login -u RohitDadgelwar -p ${docker-hub}'
                  //   sh 'docker tag demo-image RohitDadgelwar/shoes_microservice:latest'
