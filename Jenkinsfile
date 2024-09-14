@@ -3,6 +3,7 @@ pipeline{
     tools{
         maven "maven"
     }
+
     stages{
         stage("Git Checkout"){
             steps{
@@ -27,12 +28,14 @@ pipeline{
         }
         stage('Push Docker Image') {
             steps {
-                withDockerRegistry(credentialsId: 'DockerHub', url: 'https://hub.docker.com/repository/docker/rohitdadgelwar/shoes_microservice/general') {
-                    sh 'docker push rohitdadgelwar/shoes_microservice:latest'
-                }
+                    withCredentials([string(credentialsId: Docker-Hub', variable: 'docker-hub')]) 
+                    {
+                    sh 'docker login -u RohitDadgelwar -p ${docker-hub}'
+                    sh 'docker tag demo-image RohitDadgelwar/shoes_microservice:latest'
+                    sh 'docker push RohitDadgelwar/shoes_microservice:latest'
+                    sh 'docker logout'
+                    }
             }
         }
-    
     }
-    
-}
+} 
