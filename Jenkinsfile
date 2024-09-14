@@ -19,14 +19,14 @@ pipeline{
       
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t rohitdocker2002/shoes_microservice .'
+                sh 'docker build -t rohitdockerhub2002/shoes_microservice .'
             }
         }
         stage('Push Docker Image') {
             steps {
                    withDockerRegistry(credentialsId: 'Docker-Hub-cred', url: '')
                     {
-                        sh 'docker push rohitdocker2002/shoes_microservice:latest'
+                        sh 'docker push rohitdockerhub2002/shoes_microservice:latest'
                     }
             }
         }
