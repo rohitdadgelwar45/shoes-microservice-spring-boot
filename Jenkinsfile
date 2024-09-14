@@ -20,6 +20,11 @@ pipeline{
             steps {
                 sh 'mvn test'
             }
+            post{
+                always{
+                    junit stdioRetention: '', testResult: '**/target/surefire-reports/*.xml'
+                }
+            }
         }
         stage('Build Docker Image') {
             steps {
@@ -31,7 +36,7 @@ pipeline{
                     withCredentials([string(credentialsId: Docker-Hub', variable: 'docker-hub')]) 
                     {
                     sh 'docker login -u RohitDadgelwar -p ${docker-hub}'
-                    sh 'docker tag demo-image RohitDadgelwar/shoes_microservice:latest'
+                 //   sh 'docker tag demo-image RohitDadgelwar/shoes_microservice:latest'
                     sh 'docker push RohitDadgelwar/shoes_microservice:latest'
                     sh 'docker logout'
                     }
