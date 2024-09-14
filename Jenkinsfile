@@ -27,12 +27,9 @@ pipeline{
         }
         stage('Push Docker Image') {
             steps {
-                   withCredentials([string(credentialsId: 'pass', variable: 'varname')])
+                   withDockerRegistry(credentialsId: 'Docker-Hub-cred', url: 'https://hub.docker.com/repository/docker/rohitdockerhub2002/shoes-microservice/general')
                     {
-                    sh 'docker login -u ${Docker_User} -p ${pass}'
-                 //   sh 'docker tag demo-image RohitDadgelwar/shoes_microservice:latest'
-                    sh 'docker push rohitdocker2002/shoes_microservice:latest'
-                    sh 'docker logout'
+                        sh 'docker push rohitdocker2002/shoes_microservice:latest'
                     }
             }
         }
