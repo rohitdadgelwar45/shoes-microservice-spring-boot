@@ -3,9 +3,6 @@ pipeline{
     tools{
         maven "maven"
     }
-    environment{
-        Docker_User='rohitdocker2002'
-    }
 
     stages{
         stage("Git Checkout"){
