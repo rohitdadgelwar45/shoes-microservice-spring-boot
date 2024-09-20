@@ -4,4 +4,4 @@ WORKDIR /app
 COPY . .
 RUN mvn clean package
 EXPOSE 1002
-CMD ["java", "-jar", "target/your-app.jar"]
+CMD ["java", "-jar", "target/*.jar"]
